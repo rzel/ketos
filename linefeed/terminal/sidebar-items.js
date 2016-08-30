@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["CursorMode","Terminal cursor mode"],["Signal","Signal caught by a `Terminal`"]],"struct":[["Size","Represents the size of a terminal window"]],"trait":[["Terminal","Defines a low-level interface to the terminal"]],"type":[["DefaultTerminal","Type alias for the platform-dependent default `Terminal` interface"]]});

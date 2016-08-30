@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `ExecError` enum in crate `ketos`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, ExecError">
+
+    <title>ketos::exec::ExecError - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>ketos</a>::<wbr><a href='index.html'>exec</a></p><script>window.sidebarCurrent = {name: 'ExecError', ty: 'enum', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content enum">
+<h1 class='fqn'><span class='in-band'>Enum <a href='../index.html'>ketos</a>::<wbr><a href='index.html'>exec</a>::<wbr><a class='enum' href=''>ExecError</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-3902' class='srclink' href='../../src/ketos/src/ketos/exec.rs.html#122-241' title='goto source code'>[src]</a></span></h1>
+<pre class='rust enum'>pub enum ExecError {
+    ArityError {
+        name: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='../../ketos/name/struct.Name.html' title='ketos::name::Name'>Name</a>&gt;,
+        expected: <a class='enum' href='../../ketos/function/enum.Arity.html' title='ketos::function::Arity'>Arity</a>,
+        found: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>,
+    },
+    CompareNaN,
+    CannotCompare(&amp;'static <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>),
+    CannotDefine(<a class='struct' href='../../ketos/name/struct.Name.html' title='ketos::name::Name'>Name</a>),
+    DivideByZero,
+    DuplicateField(<a class='struct' href='../../ketos/name/struct.Name.html' title='ketos::name::Name'>Name</a>),
+    DuplicateKeyword(<a class='struct' href='../../ketos/name/struct.Name.html' title='ketos::name::Name'>Name</a>),
+    DuplicateStructDef(<a class='struct' href='../../ketos/name/struct.Name.html' title='ketos::name::Name'>Name</a>),
+    FieldError {
+        struct_name: <a class='struct' href='../../ketos/name/struct.Name.html' title='ketos::name::Name'>Name</a>,
+        field: <a class='struct' href='../../ketos/name/struct.Name.html' title='ketos::name::Name'>Name</a>,
+    },
+    FieldTypeError {
+        struct_name: <a class='struct' href='../../ketos/name/struct.Name.html' title='ketos::name::Name'>Name</a>,
+        field: <a class='struct' href='../../ketos/name/struct.Name.html' title='ketos::name::Name'>Name</a>,
+        expected: <a class='struct' href='../../ketos/name/struct.Name.html' title='ketos::name::Name'>Name</a>,
+        found: &amp;'static <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>,
+        value: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='enum' href='../../ketos/value/enum.Value.html' title='ketos::value::Value'>Value</a>&gt;,
+    },
+    FormatError {
+        fmt: <a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;,
+        span: <a class='struct' href='../../ketos/lexer/struct.Span.html' title='ketos::lexer::Span'>Span</a>,
+        err: <a class='enum' href='../../ketos/string_fmt/enum.FormatError.html' title='ketos::string_fmt::FormatError'>FormatError</a>,
+    },
+    InvalidClosureValue(<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>),
+    InvalidConst(<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>),
+    InvalidDepth,
+    InvalidJump(<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>),
+    InvalidSlice(<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>,&nbsp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>),
+    InvalidStack(<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>),
+    InvalidSystemFn(<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>),
+    MissingArgCount(<a class='struct' href='../../ketos/name/struct.Name.html' title='ketos::name::Name'>Name</a>),
+    MissingField {
+        struct_name: <a class='struct' href='../../ketos/name/struct.Name.html' title='ketos::name::Name'>Name</a>,
+        field: <a class='struct' href='../../ketos/name/struct.Name.html' title='ketos::name::Name'>Name</a>,
+    },
+    NameError(<a class='struct' href='../../ketos/name/struct.Name.html' title='ketos::name::Name'>Name</a>),
+    NotCharBoundary(<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>),
+    OddKeywordParams,
+    OutOfBounds(<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>),
+    Overflow,
+    Panic(<a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='enum' href='../../ketos/value/enum.Value.html' title='ketos::value::Value'>Value</a>&gt;),
+    StructDefError(<a class='struct' href='../../ketos/name/struct.Name.html' title='ketos::name::Name'>Name</a>),
+    TypeError {
+        expected: &amp;'static <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>,
+        found: &amp;'static <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>,
+        value: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='enum' href='../../ketos/value/enum.Value.html' title='ketos::value::Value'>Value</a>&gt;,
+    },
+    StructMismatch {
+        lhs: <a class='struct' href='../../ketos/name/struct.Name.html' title='ketos::name::Name'>Name</a>,
+        rhs: <a class='struct' href='../../ketos/name/struct.Name.html' title='ketos::name::Name'>Name</a>,
+    },
+    TypeMismatch {
+        lhs: &amp;'static <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>,
+        rhs: &amp;'static <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>,
+    },
+    UnexpectedEnd,
+    UnrecognizedKeyword(<a class='struct' href='../../ketos/name/struct.Name.html' title='ketos::name::Name'>Name</a>),
+    UnrecognizedOpCode(<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>),
+}</pre><div class='docblock'><p>Represents an error generated while executing bytecode.</p>
+</div><h2 class='variants'>Variants</h2>
+<span id='variant.ArityError' class='variant'><code>ArityError</code></span><div class='docblock'><p>Error in arity to function call</p>
+</div><h3 class='fields'>Fields</h3>
+
+                           <table><tr><td id='variant.ArityError.field.name'><code>name:&nbsp;<a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='../../ketos/name/struct.Name.html' title='ketos::name::Name'>Name</a>&gt;</code></td><td><div class='docblock'><p>Name of function, if available</p>
+</div></td></tr><tr><td id='variant.ArityError.field.expected'><code>expected:&nbsp;<a class='enum' href='../../ketos/function/enum.Arity.html' title='ketos::function::Arity'>Arity</a></code></td><td><div class='docblock'><p>Expected count or range of arguments</p>
+</div></td></tr><tr><td id='variant.ArityError.field.found'><code>found:&nbsp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a></code></td><td><div class='docblock'><p>Number of arguments present</p>
+</div></td></tr></table><span id='variant.CompareNaN' class='variant'><code>CompareNaN</code></span><div class='docblock'><p>Attempt to compare with a <code>NaN</code> <code>Float</code> value.</p>
+</div><span id='variant.CannotCompare' class='variant'><code>CannotCompare(&amp;'static <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>)</code></span><div class='docblock'><p>Type does not support ordered comparison</p>
+</div><span id='variant.CannotDefine' class='variant'><code>CannotDefine(<a class='struct' href='../../ketos/name/struct.Name.html' title='ketos::name::Name'>Name</a>)</code></span><div class='docblock'><p>Attempt to redefine a name in master scope</p>
+</div><span id='variant.DivideByZero' class='variant'><code>DivideByZero</code></span><div class='docblock'><p>Attempt to divide by a number equal to zero.</p>
+</div><span id='variant.DuplicateField' class='variant'><code>DuplicateField(<a class='struct' href='../../ketos/name/struct.Name.html' title='ketos::name::Name'>Name</a>)</code></span><div class='docblock'><p>Duplicate field name in struct definition</p>
+</div><span id='variant.DuplicateKeyword' class='variant'><code>DuplicateKeyword(<a class='struct' href='../../ketos/name/struct.Name.html' title='ketos::name::Name'>Name</a>)</code></span><div class='docblock'><p>Duplicate keyword argument to function</p>
+</div><span id='variant.DuplicateStructDef' class='variant'><code>DuplicateStructDef(<a class='struct' href='../../ketos/name/struct.Name.html' title='ketos::name::Name'>Name</a>)</code></span><div class='docblock'><p>Duplicate struct definition</p>
+</div><span id='variant.FieldError' class='variant'><code>FieldError</code></span><div class='docblock'><p>No such field name in struct</p>
+</div><h3 class='fields'>Fields</h3>
+
+                           <table><tr><td id='variant.FieldError.field.struct_name'><code>struct_name:&nbsp;<a class='struct' href='../../ketos/name/struct.Name.html' title='ketos::name::Name'>Name</a></code></td><td><div class='docblock'><p>Name of struct type</p>
+</div></td></tr><tr><td id='variant.FieldError.field.field'><code>field:&nbsp;<a class='struct' href='../../ketos/name/struct.Name.html' title='ketos::name::Name'>Name</a></code></td><td><div class='docblock'><p>Field name</p>
+</div></td></tr></table><span id='variant.FieldTypeError' class='variant'><code>FieldTypeError</code></span><div class='docblock'><p>Type error assigning value to field</p>
+</div><h3 class='fields'>Fields</h3>
+
+                           <table><tr><td id='variant.FieldTypeError.field.struct_name'><code>struct_name:&nbsp;<a class='struct' href='../../ketos/name/struct.Name.html' title='ketos::name::Name'>Name</a></code></td><td><div class='docblock'><p>Name of struct type</p>
+</div></td></tr><tr><td id='variant.FieldTypeError.field.field'><code>field:&nbsp;<a class='struct' href='../../ketos/name/struct.Name.html' title='ketos::name::Name'>Name</a></code></td><td><div class='docblock'><p>Name of field</p>
+</div></td></tr><tr><td id='variant.FieldTypeError.field.expected'><code>expected:&nbsp;<a class='struct' href='../../ketos/name/struct.Name.html' title='ketos::name::Name'>Name</a></code></td><td><div class='docblock'><p>Expected type name</p>
+</div></td></tr><tr><td id='variant.FieldTypeError.field.found'><code>found:&nbsp;&amp;'static <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a></code></td><td><div class='docblock'><p>Name of type received</p>
+</div></td></tr><tr><td id='variant.FieldTypeError.field.value'><code>value:&nbsp;<a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='enum' href='../../ketos/value/enum.Value.html' title='ketos::value::Value'>Value</a>&gt;</code></td><td><div class='docblock'><p>Value received</p>
+</div></td></tr></table><span id='variant.FormatError' class='variant'><code>FormatError</code></span><div class='docblock'><p>Error in <code>format</code> call</p>
+</div><h3 class='fields'>Fields</h3>
+
+                           <table><tr><td id='variant.FormatError.field.fmt'><code>fmt:&nbsp;<a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;</code></td><td><div class='docblock'><p>Supplied format string</p>
+</div></td></tr><tr><td id='variant.FormatError.field.span'><code>span:&nbsp;<a class='struct' href='../../ketos/lexer/struct.Span.html' title='ketos::lexer::Span'>Span</a></code></td><td><div class='docblock'><p>Span within format string</p>
+</div></td></tr><tr><td id='variant.FormatError.field.err'><code>err:&nbsp;<a class='enum' href='../../ketos/string_fmt/enum.FormatError.html' title='ketos::string_fmt::FormatError'>FormatError</a></code></td><td><div class='docblock'><p>Formatting error produced</p>
+</div></td></tr></table><span id='variant.InvalidClosureValue' class='variant'><code>InvalidClosureValue(<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>)</code></span><div class='docblock'><p>Invalid index into closure values</p>
+</div><span id='variant.InvalidConst' class='variant'><code>InvalidConst(<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>)</code></span><div class='docblock'><p>Invalid const index</p>
+</div><span id='variant.InvalidDepth' class='variant'><code>InvalidDepth</code></span><div class='docblock'><p>Invalid (zero) depth value to <code>Quote</code>, <code>Quasiquote</code>, or <code>Comma</code> instruction</p>
+</div><span id='variant.InvalidJump' class='variant'><code>InvalidJump(<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>)</code></span><div class='docblock'><p>Invalid jump label</p>
+</div><span id='variant.InvalidSlice' class='variant'><code>InvalidSlice(<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>,&nbsp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>)</code></span><div class='docblock'><p>Slice indices out of order</p>
+</div><span id='variant.InvalidStack' class='variant'><code>InvalidStack(<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>)</code></span><div class='docblock'><p>Invalid stack index</p>
+</div><span id='variant.InvalidSystemFn' class='variant'><code>InvalidSystemFn(<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>)</code></span><div class='docblock'><p>Invalid system function</p>
+</div><span id='variant.MissingArgCount' class='variant'><code>MissingArgCount(<a class='struct' href='../../ketos/name/struct.Name.html' title='ketos::name::Name'>Name</a>)</code></span><div class='docblock'><p><code>CallSys</code> instruction for system function which requires argument count</p>
+</div><span id='variant.MissingField' class='variant'><code>MissingField</code></span><div class='docblock'><p>Attempt to construct a <code>Struct</code> without the given field</p>
+</div><h3 class='fields'>Fields</h3>
+
+                           <table><tr><td id='variant.MissingField.field.struct_name'><code>struct_name:&nbsp;<a class='struct' href='../../ketos/name/struct.Name.html' title='ketos::name::Name'>Name</a></code></td><td><div class='docblock'><p>Struct type name</p>
+</div></td></tr><tr><td id='variant.MissingField.field.field'><code>field:&nbsp;<a class='struct' href='../../ketos/name/struct.Name.html' title='ketos::name::Name'>Name</a></code></td><td><div class='docblock'><p>Field name</p>
+</div></td></tr></table><span id='variant.NameError' class='variant'><code>NameError(<a class='struct' href='../../ketos/name/struct.Name.html' title='ketos::name::Name'>Name</a>)</code></span><div class='docblock'><p>Attempt to lookup a name that did not exist in scope.</p>
+</div><span id='variant.NotCharBoundary' class='variant'><code>NotCharBoundary(<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>)</code></span><div class='docblock'><p>Attempt to slice a string not along UTF-8 code point boundaries.</p>
+</div><span id='variant.OddKeywordParams' class='variant'><code>OddKeywordParams</code></span><div class='docblock'><p>Odd number of parameters when keyword-value pairs expected</p>
+</div><span id='variant.OutOfBounds' class='variant'><code>OutOfBounds(<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>)</code></span><div class='docblock'><p>Attempt to access an element in a list that is out of bounds.</p>
+</div><span id='variant.Overflow' class='variant'><code>Overflow</code></span><div class='docblock'><p>Integer overflow during certain arithmetic operations.</p>
+</div><span id='variant.Panic' class='variant'><code>Panic(<a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='enum' href='../../ketos/value/enum.Value.html' title='ketos::value::Value'>Value</a>&gt;)</code></span><div class='docblock'><p>Code called <code>panic</code></p>
+</div><span id='variant.StructDefError' class='variant'><code>StructDefError(<a class='struct' href='../../ketos/name/struct.Name.html' title='ketos::name::Name'>Name</a>)</code></span><div class='docblock'><p>Struct definition not found</p>
+</div><span id='variant.TypeError' class='variant'><code>TypeError</code></span><div class='docblock'><p>Operation performed on unexpected type</p>
+</div><h3 class='fields'>Fields</h3>
+
+                           <table><tr><td id='variant.TypeError.field.expected'><code>expected:&nbsp;&amp;'static <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a></code></td><td><div class='docblock'><p>Name of the type expected</p>
+</div></td></tr><tr><td id='variant.TypeError.field.found'><code>found:&nbsp;&amp;'static <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a></code></td><td><div class='docblock'><p>Name of the type received</p>
+</div></td></tr><tr><td id='variant.TypeError.field.value'><code>value:&nbsp;<a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='enum' href='../../ketos/value/enum.Value.html' title='ketos::value::Value'>Value</a>&gt;</code></td><td><div class='docblock'><p>Value received</p>
+</div></td></tr></table><span id='variant.StructMismatch' class='variant'><code>StructMismatch</code></span><div class='docblock'><p>Function received a value of incorrect type</p>
+</div><h3 class='fields'>Fields</h3>
+
+                           <table><tr><td id='variant.StructMismatch.field.lhs'><code>lhs:&nbsp;<a class='struct' href='../../ketos/name/struct.Name.html' title='ketos::name::Name'>Name</a></code></td><td><div class='docblock'><p>Type of left-hand side value</p>
+</div></td></tr><tr><td id='variant.StructMismatch.field.rhs'><code>rhs:&nbsp;<a class='struct' href='../../ketos/name/struct.Name.html' title='ketos::name::Name'>Name</a></code></td><td><div class='docblock'><p>Type of right-hand side value</p>
+</div></td></tr></table><span id='variant.TypeMismatch' class='variant'><code>TypeMismatch</code></span><div class='docblock'><p>Attempt to operate on two values of incompatible types</p>
+</div><h3 class='fields'>Fields</h3>
+
+                           <table><tr><td id='variant.TypeMismatch.field.lhs'><code>lhs:&nbsp;&amp;'static <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a></code></td><td><div class='docblock'><p>Type of left-hand side value</p>
+</div></td></tr><tr><td id='variant.TypeMismatch.field.rhs'><code>rhs:&nbsp;&amp;'static <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a></code></td><td><div class='docblock'><p>Type of right-hand side value</p>
+</div></td></tr></table><span id='variant.UnexpectedEnd' class='variant'><code>UnexpectedEnd</code></span><div class='docblock'><p>Unexpected end in bytecode</p>
+</div><span id='variant.UnrecognizedKeyword' class='variant'><code>UnrecognizedKeyword(<a class='struct' href='../../ketos/name/struct.Name.html' title='ketos::name::Name'>Name</a>)</code></span><div class='docblock'><p>Unrecognized keyword passed to function</p>
+</div><span id='variant.UnrecognizedOpCode' class='variant'><code>UnrecognizedOpCode(<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>)</code></span><div class='docblock'><p>Unrecognized opcode</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class='enum' href='../../ketos/exec/enum.ExecError.html' title='ketos::exec::ExecError'>ExecError</a></code></span><span class='out-of-band'><div class='ghost'></div><a id='src-3987' class='srclink' href='../../src/ketos/src/ketos/exec.rs.html#263-286' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.expected' class='method'><code>fn <a href='#method.expected' class='fnname'>expected</a>(expected: &amp;'static <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, v: &amp;<a class='enum' href='../../ketos/value/enum.Value.html' title='ketos::value::Value'>Value</a>) -&gt; <a class='enum' href='../../ketos/exec/enum.ExecError.html' title='ketos::exec::ExecError'>ExecError</a></code></h4>
+<div class='docblock'><p>Convenience function to return a <code>TypeError</code> value when <code>expected</code>
+type is expected, but some other type of value is found.</p>
+</div><h4 id='method.expected_field' class='method'><code>fn <a href='#method.expected_field' class='fnname'>expected_field</a>(struct_name: <a class='struct' href='../../ketos/name/struct.Name.html' title='ketos::name::Name'>Name</a>, field: <a class='struct' href='../../ketos/name/struct.Name.html' title='ketos::name::Name'>Name</a>, expected: <a class='struct' href='../../ketos/name/struct.Name.html' title='ketos::name::Name'>Name</a>, v: &amp;<a class='enum' href='../../ketos/value/enum.Value.html' title='ketos::value::Value'>Value</a>) -&gt; <a class='enum' href='../../ketos/exec/enum.ExecError.html' title='ketos::exec::ExecError'>ExecError</a></code></h4>
+<div class='docblock'><p>Convenience function to return a <code>FieldTypeError</code> value when a struct
+field of the incorrect type is received.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='enum' href='../../ketos/exec/enum.ExecError.html' title='ketos::exec::ExecError'>ExecError</a></code></span><span class='out-of-band'><div class='ghost'></div><a id='src-3823' class='srclink' href='../../src/ketos/src/ketos/exec.rs.html#121' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+<div class='docblock'><p>Formats the value using the given formatter.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/std/error/trait.Error.html' title='std::error::Error'>StdError</a> for <a class='enum' href='../../ketos/exec/enum.ExecError.html' title='ketos::exec::ExecError'>ExecError</a></code></span><span class='out-of-band'><div class='ghost'></div><a id='src-3978' class='srclink' href='../../src/ketos/src/ketos/exec.rs.html#243-245' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.description' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/std/error/trait.Error.html#tymethod.description' class='fnname'>description</a>(&amp;self) -&gt; &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a></code></h4>
+<div class='docblock'><p>A short description of the error. <a href="https://doc.rust-lang.org/nightly/std/error/trait.Error.html#tymethod.description">Read more</a></p>
+</div><h4 id='method.cause' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/std/error/trait.Error.html#method.cause' class='fnname'>cause</a>(&amp;self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;&amp;<a class='trait' href='https://doc.rust-lang.org/nightly/std/error/trait.Error.html' title='std::error::Error'>Error</a>&gt;</code><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div></h4>
+<div class='docblock'><p>The lower-level cause of this error, if any.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html' title='core::fmt::Display'>Display</a> for <a class='enum' href='../../ketos/exec/enum.ExecError.html' title='ketos::exec::ExecError'>ExecError</a></code></span><span class='out-of-band'><div class='ghost'></div><a id='src-3996' class='srclink' href='../../src/ketos/src/ketos/exec.rs.html#288-334' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt-1' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, f: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+<div class='docblock'><p>Formats the value using the given formatter.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class='trait' href='../../ketos/name/trait.NameDisplay.html' title='ketos::name::NameDisplay'>NameDisplay</a> for <a class='enum' href='../../ketos/exec/enum.ExecError.html' title='ketos::exec::ExecError'>ExecError</a></code></span><span class='out-of-band'><div class='ghost'></div><a id='src-4059' class='srclink' href='../../src/ketos/src/ketos/exec.rs.html#336-409' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt-2' class='method'><code>fn <a href='../../ketos/name/trait.NameDisplay.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, names: &amp;<a class='struct' href='../../ketos/name/struct.NameStore.html' title='ketos::name::NameStore'>NameStore</a>, f: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+<div class='docblock'><p>Writes the value&#39;s display representation to the formatter stream.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class='trait' href='../../serde/de/trait.Error.html' title='serde::de::Error'>Error</a> for <a class='enum' href='../../ketos/exec/enum.ExecError.html' title='ketos::exec::ExecError'>ExecError</a></code></span><span class='out-of-band'><div class='ghost'></div><a id='src-14096' class='srclink' href='../../src/ketos/src/ketos/value_decode.rs.html#29-37' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.custom' class='method'><code>fn <a href='../../serde/de/trait.Error.html#tymethod.custom' class='fnname'>custom</a>&lt;T:&nbsp;<a class='trait' href='https://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;&gt;(msg: T) -&gt; <a class='enum' href='../../ketos/exec/enum.ExecError.html' title='ketos::exec::ExecError'>ExecError</a></code></h4>
+<div class='docblock'><p>Raised when there is general error when deserializing a type.</p>
+</div><h4 id='method.end_of_stream' class='method'><code>fn <a href='../../serde/de/trait.Error.html#tymethod.end_of_stream' class='fnname'>end_of_stream</a>() -&gt; <a class='enum' href='../../ketos/exec/enum.ExecError.html' title='ketos::exec::ExecError'>ExecError</a></code></h4>
+<div class='docblock'><p>Raised when a <code>Deserialize</code> type unexpectedly hit the end of the stream.</p>
+</div><h4 id='method.invalid_type' class='method'><code>fn <a href='../../serde/de/trait.Error.html#method.invalid_type' class='fnname'>invalid_type</a>(ty: <a class='enum' href='../../serde/de/enum.Type.html' title='serde::de::Type'>Type</a>) -&gt; Self</code></h4>
+<div class='docblock'><p>Raised when a <code>Deserialize</code> was passed an incorrect type.</p>
+</div><h4 id='method.invalid_value' class='method'><code>fn <a href='../../serde/de/trait.Error.html#method.invalid_value' class='fnname'>invalid_value</a>(msg: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; Self</code></h4>
+<div class='docblock'><p>Raised when a <code>Deserialize</code> was passed an incorrect value.</p>
+</div><h4 id='method.invalid_length' class='method'><code>fn <a href='../../serde/de/trait.Error.html#method.invalid_length' class='fnname'>invalid_length</a>(len: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>) -&gt; Self</code></h4>
+<div class='docblock'><p>Raised when a fixed sized sequence or map was passed in the wrong amount of arguments. <a href="../../serde/de/trait.Error.html#method.invalid_length">Read more</a></p>
+</div><h4 id='method.unknown_variant' class='method'><code>fn <a href='../../serde/de/trait.Error.html#method.unknown_variant' class='fnname'>unknown_variant</a>(field: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; Self</code></h4>
+<div class='docblock'><p>Raised when a <code>Deserialize</code> enum type received an unexpected variant.</p>
+</div><h4 id='method.unknown_field' class='method'><code>fn <a href='../../serde/de/trait.Error.html#method.unknown_field' class='fnname'>unknown_field</a>(field: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; Self</code></h4>
+<div class='docblock'><p>Raised when a <code>Deserialize</code> struct type received an unexpected struct field.</p>
+</div><h4 id='method.missing_field' class='method'><code>fn <a href='../../serde/de/trait.Error.html#method.missing_field' class='fnname'>missing_field</a>(field: &amp;'static <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; Self</code></h4>
+<div class='docblock'><p>raised when a <code>deserialize</code> struct type did not receive a field.</p>
+</div><h4 id='method.duplicate_field' class='method'><code>fn <a href='../../serde/de/trait.Error.html#method.duplicate_field' class='fnname'>duplicate_field</a>(field: &amp;'static <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; Self</code></h4>
+<div class='docblock'><p>Raised when a <code>Deserialize</code> struct type received more than one of the same struct field. <a href="../../serde/de/trait.Error.html#method.duplicate_field">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class='trait' href='../../serde/ser/trait.Error.html' title='serde::ser::Error'>Error</a> for <a class='enum' href='../../ketos/exec/enum.ExecError.html' title='ketos::exec::ExecError'>ExecError</a></code></span><span class='out-of-band'><div class='ghost'></div><a id='src-14546' class='srclink' href='../../src/ketos/src/ketos/value_encode.rs.html#44-52' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.custom-1' class='method'><code>fn <a href='../../serde/ser/trait.Error.html#tymethod.custom' class='fnname'>custom</a>&lt;T:&nbsp;<a class='trait' href='https://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;&gt;(msg: T) -&gt; <a class='enum' href='../../ketos/exec/enum.ExecError.html' title='ketos::exec::ExecError'>ExecError</a></code></h4>
+<div class='docblock'><p>Raised when there is a general error when serializing a type.</p>
+</div><h4 id='method.invalid_value-1' class='method'><code>fn <a href='../../serde/ser/trait.Error.html#method.invalid_value' class='fnname'>invalid_value</a>(msg: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='enum' href='../../ketos/exec/enum.ExecError.html' title='ketos::exec::ExecError'>ExecError</a></code></h4>
+<div class='docblock'><p>Raised when a <code>Serialize</code> was passed an incorrect value.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "ketos";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>
